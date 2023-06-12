@@ -1,11 +1,17 @@
-export default function getGeolocation(setCoordinates) {
+export default function getGeolocation(dispatch) {
   if ('geolocation' in navigator) {
     console.log('Geo location Available');
     navigator.geolocation.getCurrentPosition(function (position) {
-      setCoordinates([position.coords.latitude, position.coords.longitude]);
+      dispatch({
+        type: 'SET_GEO_COORDS',
+        payload: [position.coords.latitude, position.coords.longitude],
+      });
     });
   } else {
     console.log('Geo location Not Available. Using default coordinates');
-    setCoordinates([51.505, -0.09]);
+    dispatch({
+      type: 'SET_GEO_COORDS',
+      payload: [51.505, -0.09],
+    });
   }
 }

@@ -1,26 +1,45 @@
 import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
 import styles from './Map.module.css';
 import 'leaflet/dist/leaflet.css';
-import getGeolocation from '../utility/getGeolocation';
-import { useEffect, useState } from 'react';
-import { CircularProgress } from '@mui/material';
+import { Button, CircularProgress } from '@mui/material';
 import CoronavirusOutlinedIcon from '@mui/icons-material/CoronavirusOutlined';
-import covidClientInstance from '../../services';
 import PopUpCard from './PopUpCard';
+import { useStoreState } from '../../store';
 
 export default function MapRender() {
-  const [coordinates, setCoordinates] = useState(undefined);
-  const [worldData, setWorldData] = useState(null);
-  useEffect(() => {
-    getGeolocation(setCoordinates);
-    (async () => {
-      const data = await covidClientInstance
-        .get(`countries`)
-        .then((res) => res.data);
-      setWorldData(data);
-    })();
-  }, []);
-  if (!coordinates || !worldData)
+  const { mapData, dispatchGeoLocation } = useStoreState();
+  //create a button asking use to use their geo location or use default setback location
+
+  if (!mapData.consentCompleted) {
+    return (
+      <div className={styles.consent}>
+        <h2 className={styles.title}>World Map With Covid Data</h2>
+        <div>
+          <p>In order to display map, we would like to access your location</p>
+          <div className={styles.buttonContainer}>
+            <Button
+              variant='contained'
+              type='button'
+              size='large'
+              onClick={dispatchGeoLocation.bind(null, false)}
+            >
+              Get My Location
+            </Button>
+            <Button
+              variant='contained'
+              type='button'
+              size='large'
+              onClick={dispatchGeoLocation.bind(null, true)}
+            >
+              Use Default Location
+            </Button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (!mapData.coordinates || mapData.isLoading)
     return (
       <div className={styles.containerLoader}>
         <h2 className={styles.title}>World Map With Covid Data</h2>
@@ -36,7 +55,7 @@ export default function MapRender() {
       </div>
 
       <MapContainer
-        center={coordinates}
+        center={mapData.coordinates}
         zoom={3}
         scrollWheelZoom={false}
         className={styles['leaflet-container']}
@@ -45,7 +64,7 @@ export default function MapRender() {
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
         />
-        {worldData.map((data) => {
+        {mapData.data.map((data) => {
           const {
             countryInfo: { lat, long },
             cases,

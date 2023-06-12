@@ -2,6 +2,7 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import { Suspense, lazy } from 'react';
 import HomePage from './pages/HomePage';
 import Loader from './components/Loader';
+import { StoreProvider } from './store';
 
 const WorldMapPage = lazy(() => import('./pages/WorldMapPage'));
 const CountryInfoPage = lazy(() => import('./pages/CountryInfoPage'));
@@ -30,7 +31,9 @@ const router = createBrowserRouter([
 function App() {
   return (
     <Suspense fallback={<Loader />}>
-      <RouterProvider router={router} />
+      <StoreProvider>
+        <RouterProvider router={router} />
+      </StoreProvider>
     </Suspense>
   );
 }

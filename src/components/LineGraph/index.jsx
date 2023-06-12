@@ -12,9 +12,8 @@ import {
 import { Line } from 'react-chartjs-2';
 import styles from './LineGraph.module.css';
 import moment from 'moment';
-import { useEffect, useState } from 'react';
-import covidClientInstance from '../../services';
 import { CircularProgress } from '@mui/material';
+import { useStoreState } from '../../store';
 
 ChartJS.register(
   CategoryScale,
@@ -41,7 +40,7 @@ const options = {
   maintainAspectRatio: false,
 };
 
-const convertToXYPair = (data) => {
+const convertToXYPair = (data = {}) => {
   const xyArray = [];
   for (const date in data) {
     const xyPair = { x: '', y: '' };
@@ -54,21 +53,11 @@ const convertToXYPair = (data) => {
 };
 
 export default function LineGraph() {
-  const [loading, setLoading] = useState(false);
-  const [worldData, setWorldData] = useState([]);
-  useEffect(() => {
-    setLoading(true);
-    (async () => {
-      const data = await covidClientInstance
-        .get(`historical/all?lastdays=180`)
-        .then((res) => res.data);
-      setWorldData(data?.deaths ? data.deaths : []);
-      setLoading(false);
-    })();
-  }, []);
-  const modifiedData = convertToXYPair(worldData);
+  const { graph } = useStoreState();
 
-  if (loading)
+  const modifiedData = convertToXYPair(graph?.data);
+
+  if (graph.isLoading)
     return (
       <div className={styles.containerLoader}>
         <h2 className={styles.title}>Worldwide Total Covid Deaths Count</h2>

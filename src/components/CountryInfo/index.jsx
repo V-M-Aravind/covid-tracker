@@ -1,26 +1,17 @@
 import SearchBar from './SearchBar';
 import styles from './CountryInfo.module.css';
 import Card from './Card';
-import { useState } from 'react';
-import covidClientInstance from '../../services';
 import { CircularProgress } from '@mui/material';
+import { useStoreState } from '../../store';
 
 const CountryInfo = () => {
-  const [loading, setLoading] = useState(false);
-  const [countryData, setCountryData] = useState(null);
-  const searchCountry = async (country) => {
-    setLoading(true);
-    console.log('country', country);
-    const data = await covidClientInstance
-      .get(`countries/${country}?strict=true`)
-      .then((res) => res.data);
-    console.log('api result', data);
-    setCountryData(data);
-    setLoading(false);
-  };
+  const {
+    country: { isLoading, data },
+    dispatchCountryData,
+  } = useStoreState();
 
   const modifiedCountryData = () => {
-    if (!countryData) return null;
+    if (!data) return null;
     const {
       cases,
       todayCases,
@@ -28,7 +19,7 @@ const CountryInfo = () => {
       todayDeaths,
       recovered,
       todayRecovered,
-    } = countryData;
+    } = data;
     return {
       cases,
       deaths,
@@ -38,20 +29,19 @@ const CountryInfo = () => {
       todayRecovered,
     };
   };
-  console.log('modifiedCountryData', modifiedCountryData());
   return (
     <div>
       <h2 className={styles.title}>Country Covid Data</h2>
-      <SearchBar onSubmit={searchCountry} />
+      <SearchBar onSubmit={dispatchCountryData} />
 
-      {loading && (
+      {isLoading && (
         <div className={styles.center}>
-          <CircularProgress />{' '}
+          <CircularProgress />
         </div>
       )}
-      {!loading && countryData && (
+      {!isLoading && data?.country && (
         <>
-          <h2 className={styles.subtitle}>{countryData.country}</h2>
+          <h2 className={styles.subtitle}>{data.country}</h2>
           <div className={styles.cardContainer}>
             {Object.entries(modifiedCountryData()).map((entry) => (
               <Card key={entry[0]} type={entry[0]} count={entry[1]} />
