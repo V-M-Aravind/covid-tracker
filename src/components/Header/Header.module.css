@@ -1,0 +1,26 @@
+.logo {
+  height: 25px;
+  aspect-ratio: auto;
+  margin-right: 10px;
+}
+.logo-large {
+  height: 30px;
+  aspect-ratio: auto;
+  margin-right: 10px;
+}
+.navItem {
+  text-decoration: none;
+  color: #7e7e7e;
+  font-family: 'Proxima-Bold', sans-serif;
+  transition: all 1.2s ease-in-out;
+}
+.navItemActive {
+  color: #000000;
+  transform: scale(1.1);
+}
+
+@media screen and (min-width: 600px) {
+  .logo {
+    height: 30px;
+  }
+}

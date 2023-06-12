@@ -1,0 +1,11 @@
+.searchBar {
+  max-width: 600px;
+  margin: auto;
+  margin-bottom: 70px;
+}
+
+.form {
+  display: flex;
+  justify-content: space-between;
+  column-gap: 30px;
+}

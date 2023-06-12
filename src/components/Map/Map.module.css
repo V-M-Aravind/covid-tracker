@@ -1,0 +1,32 @@
+.containerLoader {
+  width: 40%;
+  margin: 5px auto 4px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 200px;
+}
+
+.container {
+  width: 40%;
+  margin: 5px auto 4px;
+  position: relative;
+}
+.title__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.title {
+  text-align: center;
+  margin-bottom: 3px;
+}
+
+.container > .leaflet-container {
+  height: 600px;
+}
+
+.popup {
+  background: rgb(133, 171, 203) !important;
+}

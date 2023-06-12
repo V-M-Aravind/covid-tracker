@@ -1,0 +1,86 @@
+/* Welcome Banner */
+.welcomeBanner {
+  background-color: #333;
+  padding: 50px;
+  text-align: center;
+}
+
+.welcomeBanner h1 {
+  color: #fff;
+  font-size: 40px;
+}
+
+.welcomeContent {
+  margin-top: 20px;
+  color: #fff;
+  font-size: 20px;
+}
+
+/* Sections */
+section {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin: 40px 0;
+  padding: 15px 40px;
+  color: #000000;
+  background-color: #e2e2e2;
+}
+
+section:nth-child(even) {
+  flex-direction: row-reverse;
+  padding-left: 20px;
+}
+
+section h2 {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+section p {
+  margin-bottom: 20px;
+  font-size: 20px;
+}
+
+section ul {
+  list-style-type: disc;
+  margin-left: 20px;
+  font-size: 20px;
+}
+
+section img {
+  width: 400px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 20px 30px;
+  animation: iamgeBlur 2s ease-in;
+  opacity: 1;
+}
+
+@keyframes iamgeBlur {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  section {
+    flex-direction: column;
+  }
+
+  section:nth-child(even) {
+    flex-direction: column;
+  }
+
+  section img {
+    margin-top: 20px;
+  }
+}

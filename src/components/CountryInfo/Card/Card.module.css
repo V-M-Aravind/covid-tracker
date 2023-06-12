@@ -1,0 +1,63 @@
+.container {
+  width: 340px;
+  height: 220px;
+  position: relative;
+  border-radius: 8%;
+  margin: 20px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 25px 0;
+  align-items: center;
+  box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+  animation: enter 1s linear;
+  background-color: rgb(
+    164,
+    242,
+    248
+  ); /* For browsers that do not support gradients */
+  background-image: linear-gradient(
+    to bottom right,
+    rgb(119, 205, 34),
+    rgb(150, 219, 243)
+  );
+}
+
+.container h3 {
+  font-size: 26px;
+}
+.container p {
+  font-size: 22px;
+  font-family: Proxima-Bold, 'Times New Roman', Times, serif;
+}
+@keyframes enter {
+  0% {
+    top: 120%;
+  }
+
+  50% {
+    top: 75%;
+  }
+  100% {
+    top: 0%;
+  }
+}
+
+.cases p {
+  color: blue;
+}
+.todayCases p {
+  color: rgb(47, 47, 246);
+}
+.deaths p {
+  color: red;
+}
+.todayDeaths p {
+  color: rgb(175, 0, 0);
+}
+.recovered p {
+  color: green;
+}
+.todayRecovered p {
+  color: rgb(33, 164, 33);
+}

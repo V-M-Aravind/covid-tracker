@@ -1,0 +1,33 @@
+.container {
+  width: 200px;
+  font-size: 17px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}
+
+.container h3 {
+  font-size: 22px;
+}
+
+.tCases span {
+  color: blue;
+}
+.aCases span {
+  color: rgb(255, 111, 0);
+  font-family: Proxima-SemiBold, Verdana, sans-serif;
+}
+.recovered span {
+  color: green;
+}
+.deaths span {
+  color: red;
+}
+
+.tCases label,
+.aCases label,
+.recovered label,
+.deaths label {
+  font-family: Proxima-Bold, Verdana, sans-serif;
+  margin-right: 8px;
+}
