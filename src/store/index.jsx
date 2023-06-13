@@ -1,18 +1,39 @@
 import { useReducer, useContext, createContext, useEffect } from 'react';
 import covidClientInstance from '../services';
 import getGeolocation from '../components/utility/getGeolocation';
+import {
+  SET_CONSENT,
+  SET_COUNTRY_DATA,
+  SET_COUNTRY_ERROR,
+  SET_COUNTRY_LOADING,
+  SET_GEO_COORDS,
+  SET_GRAPH_DATA,
+  SET_GRAPH_ERROR,
+  SET_GRAPH_LOADING,
+  SET_MAP_DATA,
+  SET_MAP_ERROR,
+  SET_MAP_LOADING,
+} from './storeConstants';
+import {
+  COUNTRY_NOT_FOUND_ERROR,
+  COUNTRY_NOT_FOUND_ERROR_MESSAGE,
+  DEFAULT_COORDINATES,
+  GRAPH_ERROR_MESSAGE,
+  MAP_ERROR_MESSAGE,
+} from '../components/constants';
 
 const initialState = {
   mapData: {
     coordinates: null,
     data: [],
-    isLoading: false,
+    isLoading: true,
     error: '',
     consentCompleted: false,
+    geoLocationFetchError: false,
   },
   graph: {
     data: {},
-    isLoading: false,
+    isLoading: true,
     error: '',
   },
   country: {
@@ -33,24 +54,26 @@ const storeReducer = (state, action) => {
   switch (action.type) {
     //World map page
     //map
-    case 'SET_MAP_DATA':
+    case SET_MAP_DATA:
       return {
         ...state,
         mapData: {
           ...state.mapData,
           isLoading: false,
           data: action.payload,
+          error: null,
         },
       };
-    case 'SET_MAP_LOADING':
+    case SET_MAP_LOADING:
       return {
         ...state,
         mapData: {
           ...state.mapData,
           isLoading: true,
+          error: null,
         },
       };
-    case 'SET_MAP_ERROR':
+    case SET_MAP_ERROR:
       return {
         ...state,
         mapData: {
@@ -59,15 +82,15 @@ const storeReducer = (state, action) => {
           error: action.payload,
         },
       };
-    case 'SET_GEO_COORDS':
+    case SET_GEO_COORDS:
       return {
         ...state,
         mapData: {
           ...state.mapData,
-          coordinates: action.payload,
+          ...action.payload,
         },
       };
-    case 'SET_CONSENT':
+    case SET_CONSENT:
       return {
         ...state,
         mapData: {
@@ -76,24 +99,26 @@ const storeReducer = (state, action) => {
         },
       };
     //graph
-    case 'SET_GRAPH_DATA':
+    case SET_GRAPH_DATA:
       return {
         ...state,
         graph: {
           ...state.graph,
           isLoading: false,
           data: action.payload,
+          error: null,
         },
       };
-    case 'SET_GRAPH_LOADING':
+    case SET_GRAPH_LOADING:
       return {
         ...state,
         graph: {
           ...state.graph,
           isLoading: true,
+          error: null,
         },
       };
-    case 'SET_GRAPH_ERROR':
+    case SET_GRAPH_ERROR:
       return {
         ...state,
         graph: {
@@ -103,24 +128,26 @@ const storeReducer = (state, action) => {
         },
       };
     //countries page
-    case 'SET_COUNTRY_DATA':
+    case SET_COUNTRY_DATA:
       return {
         ...state,
         country: {
           ...state.country,
           isLoading: false,
           data: action.payload,
+          error: null,
         },
       };
-    case 'SET_COUNTRY_LOADING':
+    case SET_COUNTRY_LOADING:
       return {
         ...state,
         country: {
           ...state.country,
           isLoading: true,
+          error: null,
         },
       };
-    case 'SET_COUNTRY_ERROR':
+    case SET_COUNTRY_ERROR:
       return {
         ...state,
         country: {
@@ -140,21 +167,27 @@ export function StoreProvider(props) {
   const [state, dispatch] = useReducer(storeReducer, initialState);
   const dispatchMapData = () => {
     dispatch({
-      type: 'SET_MAP_LOADING',
+      type: SET_MAP_LOADING,
     });
-    getMapData().then((data) => {
-      dispatch({ type: 'SET_MAP_DATA', payload: data });
-    });
+    getMapData()
+      .then((data) => {
+        dispatch({ type: SET_MAP_DATA, payload: data });
+      })
+      .catch(() =>
+        dispatch({
+          type: SET_MAP_ERROR,
+          payload: MAP_ERROR_MESSAGE,
+        })
+      );
   };
   const dispatchGeoLocation = (isDefault = false) => {
     dispatch({
-      type: 'SET_CONSENT',
+      type: SET_CONSENT,
     });
-    console.log('default', isDefault);
     if (isDefault) {
       dispatch({
-        type: 'SET_GEO_COORDS',
-        payload: [51.505, -0.09],
+        type: SET_GEO_COORDS,
+        payload: { coordinates: DEFAULT_COORDINATES },
       });
     } else {
       getGeolocation(dispatch);
@@ -162,19 +195,39 @@ export function StoreProvider(props) {
   };
   const dispatchGraphData = () => {
     dispatch({
-      type: 'SET_GRAPH_LOADING',
+      type: SET_GRAPH_LOADING,
     });
-    getGraphData().then((data) => {
-      dispatch({ type: 'SET_GRAPH_DATA', payload: data });
-    });
+    getGraphData()
+      .then((data) => {
+        dispatch({ type: SET_GRAPH_DATA, payload: data });
+      })
+      .catch(() =>
+        dispatch({
+          type: SET_GRAPH_ERROR,
+          payload: GRAPH_ERROR_MESSAGE,
+        })
+      );
   };
   const dispatchCountryData = (country) => {
     dispatch({
-      type: 'SET_COUNTRY_LOADING',
+      type: SET_COUNTRY_LOADING,
     });
-    getCountryData(country).then((data) => {
-      dispatch({ type: 'SET_COUNTRY_DATA', payload: data });
-    });
+    getCountryData(country)
+      .then((data) => {
+        dispatch({ type: SET_COUNTRY_DATA, payload: data });
+      })
+      .catch((e) => {
+        if (e?.response?.data?.message === COUNTRY_NOT_FOUND_ERROR) {
+          dispatch({
+            type: SET_COUNTRY_ERROR,
+            payload: COUNTRY_NOT_FOUND_ERROR_MESSAGE,
+          });
+        } else
+          dispatch({
+            type: SET_COUNTRY_ERROR,
+            payload: COUNTRY_NOT_FOUND_ERROR_MESSAGE,
+          });
+      });
   };
   useEffect(() => {
     dispatchMapData();
@@ -187,6 +240,7 @@ export function StoreProvider(props) {
         ...state,
         dispatchGeoLocation,
         dispatchCountryData,
+        dispatchGraphData,
       }}
     >
       {props.children}

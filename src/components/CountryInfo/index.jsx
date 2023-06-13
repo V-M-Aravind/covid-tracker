@@ -3,10 +3,11 @@ import styles from './CountryInfo.module.css';
 import Card from './Card';
 import { CircularProgress } from '@mui/material';
 import { useStoreState } from '../../store';
+import RetryComponent from '../RetryComponent';
 
 const CountryInfo = () => {
   const {
-    country: { isLoading, data },
+    country: { isLoading, data, error },
     dispatchCountryData,
   } = useStoreState();
 
@@ -30,7 +31,7 @@ const CountryInfo = () => {
     };
   };
   return (
-    <div>
+    <div className={styles.container}>
       <h2 className={styles.title}>Country Covid Data</h2>
       <SearchBar onSubmit={dispatchCountryData} />
 
@@ -39,7 +40,8 @@ const CountryInfo = () => {
           <CircularProgress />
         </div>
       )}
-      {!isLoading && data?.country && (
+      {error && <RetryComponent retryMessage={error} />}
+      {!isLoading && data?.country && !error && (
         <>
           <h2 className={styles.subtitle}>{data.country}</h2>
           <div className={styles.cardContainer}>

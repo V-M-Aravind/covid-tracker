@@ -1,13 +1,3 @@
-.containerLoader {
-  width: 40%;
-  margin: 5px auto 4px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  height: 200px;
-}
-
 .container {
   width: 40%;
   margin: 5px auto 4px;
@@ -22,31 +12,6 @@
   text-align: center;
   margin-bottom: 3px;
 }
-
-.container > .leaflet-container {
+.leaflet-container {
   height: 600px;
-}
-
-.popup {
-  background: rgb(133, 171, 203) !important;
-}
-.consent {
-  min-width: 45%;
-  margin: 5px auto 4px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  height: 200px;
-}
-.consent p {
-  font-size: 18px;
-  font-family: Proxima-SemiBold, 'Times New Roman', Times, serif;
-  font-style: italic;
-  margin-bottom: 10px;
-}
-
-.buttonContainer {
-  display: flex;
-  justify-content: space-between;
 }

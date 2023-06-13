@@ -14,6 +14,8 @@ import styles from './LineGraph.module.css';
 import moment from 'moment';
 import { CircularProgress } from '@mui/material';
 import { useStoreState } from '../../store';
+import Loader from '../Loader';
+import RetryComponent from '../RetryComponent';
 
 ChartJS.register(
   CategoryScale,
@@ -53,35 +55,36 @@ const convertToXYPair = (data = {}) => {
 };
 
 export default function LineGraph() {
-  const { graph } = useStoreState();
+  const {
+    graph: { error, isLoading, data },
+    dispatchGraphData,
+  } = useStoreState();
 
-  const modifiedData = convertToXYPair(graph?.data);
-
-  if (graph.isLoading)
-    return (
-      <div className={styles.containerLoader}>
-        <h2 className={styles.title}>Worldwide Total Covid Deaths Count</h2>
-        <CircularProgress />
-      </div>
-    );
+  const modifiedData = convertToXYPair(data);
 
   return (
     <div className={styles.container}>
       <h2 className={styles.title}>Worldwide Total Covid Deaths Count</h2>
-      <Line
-        options={options}
-        data={{
-          datasets: [
-            {
-              label: 'Worldwide Total Covid Deaths Count',
-              fill: true,
-              backgroundColor: 'rgba(204, 16, 52, 0.5)',
-              borderColor: '#CC1034',
-              data: modifiedData,
-            },
-          ],
-        }}
-      />
+      {error && (
+        <RetryComponent retryMessage={error} onRetry={dispatchGraphData} />
+      )}
+      {isLoading && <Loader />}
+      {!isLoading && !error && (
+        <Line
+          options={options}
+          data={{
+            datasets: [
+              {
+                label: 'Worldwide Total Covid Deaths Count',
+                fill: true,
+                backgroundColor: 'rgba(204, 16, 52, 0.5)',
+                borderColor: '#CC1034',
+                data: modifiedData,
+              },
+            ],
+          }}
+        />
+      )}
     </div>
   );
 }
