@@ -2,6 +2,17 @@ import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
 import styles from './MapRenderer.module.css';
 import 'leaflet/dist/leaflet.css';
 import PopUpCard from '../PopUpCard';
+import L from 'leaflet';
+
+const markerIcon = L.icon({
+  iconUrl: '/assets/images/marker-icon-s.png',
+  iconSize: [30, 30],
+  iconAnchor: [22, 94],
+  popupAnchor: [-3, -76],
+  shadowUrl: '/assets/images/marker-shadow.png',
+  shadowSize: [30, 30],
+  shadowAnchor: [22, 94],
+});
 
 const MapRenderer = ({ mapData }) => {
   return (
@@ -25,7 +36,7 @@ const MapRenderer = ({ mapData }) => {
           country,
         } = data;
         return (
-          <Marker position={[lat, long]} key={country}>
+          <Marker position={[lat, long]} key={country} icon={markerIcon}>
             <Popup className={styles.popup}>
               <PopUpCard
                 country={country}

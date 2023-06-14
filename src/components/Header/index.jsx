@@ -45,7 +45,7 @@ function DrawerAppBar(props) {
         }}
       >
         <img
-          src='/assets/logo/c-t-logo-small.png'
+          src='./assets/logo/c-t-logo-small.png'
           alt='covid-tracker-logo'
           className={styles['logo']}
         />
@@ -103,7 +103,7 @@ function DrawerAppBar(props) {
             }}
           >
             <img
-              src='/assets/logo/c-t-logo-small.png'
+              src='./assets/logo/c-t-logo-small.png'
               alt='covid-tracker-logo'
               className={styles['logo']}
             />
@@ -119,7 +119,7 @@ function DrawerAppBar(props) {
             }}
           >
             <img
-              src='/assets/logo/c-t-logo-large.png'
+              src='./assets/logo/c-t-logo-large.png'
               alt='covid-tracker-logo'
               className={styles['logo-large']}
             />

@@ -35,7 +35,7 @@ const HomePage = () => {
           </p>
         </div>
         <img
-          src='/assets/images/covid.jpg'
+          src='./assets/images/covid.jpg'
           alt='About COVID-19'
           width={'400px'}
           height={'255px'}
@@ -79,7 +79,7 @@ const HomePage = () => {
           </p>
         </div>
         <img
-          src='/assets/images/precautions.jpg'
+          src='./assets/images/precautions.jpg'
           alt='COVID-19 Precautions'
           width={'400px'}
           height={'255px'}
@@ -110,7 +110,7 @@ const HomePage = () => {
           </p>
         </div>
         <img
-          src='/assets/images/symptoms.jpg'
+          src='./assets/images/symptoms.jpg'
           alt='COVID-19 Symptoms'
           loading='lazy'
           width={'400px'}
@@ -135,7 +135,7 @@ const HomePage = () => {
           </p>
         </div>
         <img
-          src='/assets/images/medications.jpg'
+          src='./assets/images/medications.jpg'
           alt='COVID-19 Medications'
           loading='lazy'
           width={'400px'}
