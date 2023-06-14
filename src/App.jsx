@@ -1,4 +1,4 @@
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { RouterProvider, createHashRouter } from 'react-router-dom';
 import { Suspense, lazy } from 'react';
 import HomePage from './pages/HomePage';
 import { StoreProvider } from './store';
@@ -8,7 +8,7 @@ import RouteErrorPage from './pages/RouteErrorPage';
 const WorldMapPage = lazy(() => import('./pages/WorldMapPage'));
 const CountryInfoPage = lazy(() => import('./pages/CountryInfoPage'));
 
-const router = createBrowserRouter([
+const router = createHashRouter([
   {
     path: '/',
     element: <HomePage />,
