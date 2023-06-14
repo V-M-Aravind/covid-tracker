@@ -1,4 +1,29 @@
-.flexContainer {
+.flexContainerWM {
   display: flex;
+  flex-direction: column;
   justify-content: space-around;
+  row-gap: 70px;
+}
+
+.loadingPage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+  background-color: white;
+}
+
+.errorPage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  margin-top: 100px;
+}
+
+/* Media Queries */
+@media (min-width: 1000px) {
+  .flexContainerWM {
+    flex-direction: row;
+  }
 }

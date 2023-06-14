@@ -12,9 +12,10 @@ import {
 import { Line } from 'react-chartjs-2';
 import styles from './LineGraph.module.css';
 import moment from 'moment';
-import { useEffect, useState } from 'react';
-import covidClientInstance from '../../services';
 import { CircularProgress } from '@mui/material';
+import { useStoreState } from '../../store';
+import Loader from '../Loader';
+import RetryComponent from '../RetryComponent';
 
 ChartJS.register(
   CategoryScale,
@@ -41,7 +42,7 @@ const options = {
   maintainAspectRatio: false,
 };
 
-const convertToXYPair = (data) => {
+const convertToXYPair = (data = {}) => {
   const xyArray = [];
   for (const date in data) {
     const xyPair = { x: '', y: '' };
@@ -54,45 +55,36 @@ const convertToXYPair = (data) => {
 };
 
 export default function LineGraph() {
-  const [loading, setLoading] = useState(false);
-  const [worldData, setWorldData] = useState([]);
-  useEffect(() => {
-    setLoading(true);
-    (async () => {
-      const data = await covidClientInstance
-        .get(`historical/all?lastdays=180`)
-        .then((res) => res.data);
-      setWorldData(data?.deaths ? data.deaths : []);
-      setLoading(false);
-    })();
-  }, []);
-  const modifiedData = convertToXYPair(worldData);
+  const {
+    graph: { error, isLoading, data },
+    dispatchGraphData,
+  } = useStoreState();
 
-  if (loading)
-    return (
-      <div className={styles.containerLoader}>
-        <h2 className={styles.title}>Worldwide Total Covid Deaths Count</h2>
-        <CircularProgress />
-      </div>
-    );
+  const modifiedData = convertToXYPair(data);
 
   return (
     <div className={styles.container}>
       <h2 className={styles.title}>Worldwide Total Covid Deaths Count</h2>
-      <Line
-        options={options}
-        data={{
-          datasets: [
-            {
-              label: 'Worldwide Total Covid Deaths Count',
-              fill: true,
-              backgroundColor: 'rgba(204, 16, 52, 0.5)',
-              borderColor: '#CC1034',
-              data: modifiedData,
-            },
-          ],
-        }}
-      />
+      {error && (
+        <RetryComponent retryMessage={error} onRetry={dispatchGraphData} />
+      )}
+      {isLoading && <Loader />}
+      {!isLoading && !error && (
+        <Line
+          options={options}
+          data={{
+            datasets: [
+              {
+                label: 'Worldwide Total Covid Deaths Count',
+                fill: true,
+                backgroundColor: 'rgba(204, 16, 52, 0.5)',
+                borderColor: '#CC1034',
+                data: modifiedData,
+              },
+            ],
+          }}
+        />
+      )}
     </div>
   );
 }

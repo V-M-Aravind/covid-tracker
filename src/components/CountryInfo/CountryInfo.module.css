@@ -1,15 +1,16 @@
+.container {
+  margin: 0 15px;
+}
 .title {
   text-align: center;
   margin-bottom: 20px;
 }
 .cardContainer {
   display: grid;
-  grid-template-columns: repeat(auto-fill, 340px);
-  grid-gap: 10px;
-  max-width: 1300px;
+  grid-template-columns: repeat(auto-fill, 300px);
+  grid-gap: 50px 10px;
   margin: auto;
   justify-content: space-around;
-  overflow: hidden;
   margin-bottom: 50px;
 }
 .item {
@@ -20,9 +21,28 @@
 
 .subtitle {
   text-align: center;
-  margin: 30px 0px;
+  margin: 20px 0px;
 }
 .center {
   display: flex;
   justify-content: center;
+}
+
+/* Media Queries */
+@media (min-width: 480px) {
+  .container {
+    max-width: 1320px;
+    margin: 0 auto;
+  }
+
+  .cardContainer {
+    grid-template-columns: repeat(auto-fill, 340px);
+  }
+}
+
+@media (min-width: 1000px) {
+  .container {
+    max-width: 1320px;
+    margin: 0 auto;
+  }
 }

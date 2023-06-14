@@ -1,0 +1,7 @@
+.leaflet-container {
+  height: 600px;
+}
+
+.popup {
+  background: rgb(133, 171, 203) !important;
+}

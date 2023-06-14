@@ -1,7 +1,9 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import { Suspense, lazy } from 'react';
 import HomePage from './pages/HomePage';
-import Loader from './components/Loader';
+import { StoreProvider } from './store';
+import LoadingPage from './pages/LoadingPage';
+import RouteErrorPage from './pages/RouteErrorPage';
 
 const WorldMapPage = lazy(() => import('./pages/WorldMapPage'));
 const CountryInfoPage = lazy(() => import('./pages/CountryInfoPage'));
@@ -10,6 +12,7 @@ const router = createBrowserRouter([
   {
     path: '/',
     element: <HomePage />,
+    errorElement: <RouteErrorPage />,
   },
   {
     path: '/world-map',
@@ -29,8 +32,10 @@ const router = createBrowserRouter([
 
 function App() {
   return (
-    <Suspense fallback={<Loader />}>
-      <RouterProvider router={router} />
+    <Suspense fallback={<LoadingPage />}>
+      <StoreProvider>
+        <RouterProvider router={router} />
+      </StoreProvider>
     </Suspense>
   );
 }
