@@ -1,13 +1,16 @@
 {
+  "homepage": "https://V-M-Aravind.github.io/covid-tracker",
   "name": "covid-tracker",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.0.1",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "dependencies": {
     "@emotion/react": "^11.11.0",
@@ -16,6 +19,7 @@
     "@mui/material": "^5.13.3",
     "axios": "^1.4.0",
     "chart.js": "^4.3.0",
+    "gh-pages": "^5.0.0",
     "leaflet": "^1.9.4",
     "loadash": "^1.0.0",
     "moment": "^2.29.4",
