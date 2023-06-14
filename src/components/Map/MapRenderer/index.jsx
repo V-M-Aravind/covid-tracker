@@ -5,11 +5,11 @@ import PopUpCard from '../PopUpCard';
 import L from 'leaflet';
 
 const markerIcon = L.icon({
-  iconUrl: '/assets/images/marker-icon-s.png',
+  iconUrl: './assets/images/marker-icon-s.png',
   iconSize: [30, 30],
   iconAnchor: [22, 94],
   popupAnchor: [-3, -76],
-  shadowUrl: '/assets/images/marker-shadow.png',
+  shadowUrl: './assets/images/marker-shadow.png',
   shadowSize: [30, 30],
   shadowAnchor: [22, 94],
 });
