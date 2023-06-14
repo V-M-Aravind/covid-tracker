@@ -1,7 +1,7 @@
 import { Button } from '@mui/material';
 import styles from './RetryComponent.module.css';
 
-const RetryComponent = ({ retryMessage, onRetry = '' }) => {
+const RetryComponent = ({ retryMessage, onRetry = null }) => {
   return (
     <div className={styles.container}>
       <p>{retryMessage}</p>

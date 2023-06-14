@@ -1,11 +1,22 @@
 .searchBar {
   max-width: 600px;
   margin: auto;
-  margin-bottom: 50px;
+  margin-bottom: 20px;
 }
 
 .form {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  column-gap: 30px;
+  row-gap: 30px;
+}
+
+/* Media Queries */
+@media (min-width: 650px) {
+  .form {
+    flex-direction: row;
+    justify-content: space-between;
+    column-gap: 30px;
+    margin-bottom: 50px;
+  }
 }

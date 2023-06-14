@@ -1,5 +1,5 @@
 .container {
-  width: 40%;
+  width: 90%;
   margin: 4px auto;
   height: 600px;
   margin-top: 5px;
@@ -8,4 +8,11 @@
 .title {
   text-align: center;
   margin-bottom: 10px;
+}
+
+/* Media Queries */
+@media (min-width: 1000px) {
+  .container {
+    width: 40%;
+  }
 }

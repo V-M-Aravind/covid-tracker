@@ -30,7 +30,7 @@ export default function MapRender() {
       )}
       {mapData.isLoading && <Loader />}
       {!!showMap && <MapRenderer mapData={mapData} />}
-      {mapData.geoLocationFetchError && (
+      {!mapData.error && mapData.geoLocationFetchError && (
         <RetryComponent retryMessage={GEOLOCATION_ERROR_MESSAGE} />
       )}
     </div>

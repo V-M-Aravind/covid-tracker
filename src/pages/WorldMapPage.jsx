@@ -6,7 +6,7 @@ import styles from './Pages.module.css';
 const WorldMapPage = () => {
   return (
     <Layout>
-      <div className={styles.flexContainer}>
+      <div className={styles.flexContainerWM}>
         <LineGraph />
         <MapRender />
       </div>

@@ -2,10 +2,12 @@
   margin-top: 90px;
   padding: 2px 4px;
   min-height: 86vh;
+  margin-top: 150px;
 }
 
-@media screen and (min-width: 600px) {
+/* Media Queries */
+@media (min-width: 280px) {
   .container {
-    margin-top: 70px;
+    margin-top: 100px;
   }
 }

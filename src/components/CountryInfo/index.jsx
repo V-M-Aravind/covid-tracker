@@ -4,6 +4,7 @@ import Card from './Card';
 import { CircularProgress } from '@mui/material';
 import { useStoreState } from '../../store';
 import RetryComponent from '../RetryComponent';
+import { formatNumber, getLocalLanguage } from '../utility/generalUtility';
 
 const CountryInfo = () => {
   const {
@@ -21,13 +22,14 @@ const CountryInfo = () => {
       recovered,
       todayRecovered,
     } = data;
+    const lanuageFormat = getLocalLanguage();
     return {
-      cases,
-      deaths,
-      recovered,
-      todayCases,
-      todayDeaths,
-      todayRecovered,
+      cases: formatNumber(cases, lanuageFormat),
+      deaths: formatNumber(deaths, lanuageFormat),
+      recovered: formatNumber(recovered, lanuageFormat),
+      todayCases: formatNumber(todayCases, lanuageFormat),
+      todayDeaths: formatNumber(todayDeaths, lanuageFormat),
+      todayRecovered: formatNumber(todayRecovered, lanuageFormat),
     };
   };
   return (

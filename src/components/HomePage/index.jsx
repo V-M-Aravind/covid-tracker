@@ -34,7 +34,12 @@ const HomePage = () => {
             individuals.
           </p>
         </div>
-        <img src='/src/assets/images/covid.jpg' alt='About COVID-19' />
+        <img
+          src='/src/assets/images/covid.jpg'
+          alt='About COVID-19'
+          width={'400px'}
+          height={'255px'}
+        />
       </section>
       <section id='precautions' className={styles.section}>
         <div>
@@ -76,6 +81,8 @@ const HomePage = () => {
         <img
           src='/src/assets/images/precautions.jpg'
           alt='COVID-19 Precautions'
+          width={'400px'}
+          height={'255px'}
         />
       </section>
       <section id='symptoms' className={styles.section}>
@@ -106,6 +113,8 @@ const HomePage = () => {
           src='/src/assets/images/symptoms.jpg'
           alt='COVID-19 Symptoms'
           loading='lazy'
+          width={'400px'}
+          height={'255px'}
         />
       </section>
       <section id='medications' className={styles.section}>
@@ -129,6 +138,8 @@ const HomePage = () => {
           src='/src/assets/images/medications.jpg'
           alt='COVID-19 Medications'
           loading='lazy'
+          width={'400px'}
+          height={'auto'}
         />
       </section>
     </div>

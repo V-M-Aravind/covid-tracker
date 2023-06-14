@@ -1,5 +1,5 @@
 .container {
-  max-width: 1320px;
+  margin: 0 15px;
 }
 .title {
   text-align: center;
@@ -7,11 +7,10 @@
 }
 .cardContainer {
   display: grid;
-  grid-template-columns: repeat(auto-fill, 340px);
-  grid-gap: 10px;
+  grid-template-columns: repeat(auto-fill, 300px);
+  grid-gap: 50px 10px;
   margin: auto;
   justify-content: space-around;
-  overflow: hidden;
   margin-bottom: 50px;
 }
 .item {
@@ -27,4 +26,23 @@
 .center {
   display: flex;
   justify-content: center;
+}
+
+/* Media Queries */
+@media (min-width: 480px) {
+  .container {
+    max-width: 1320px;
+    margin: 0 auto;
+  }
+
+  .cardContainer {
+    grid-template-columns: repeat(auto-fill, 340px);
+  }
+}
+
+@media (min-width: 1000px) {
+  .container {
+    max-width: 1320px;
+    margin: 0 auto;
+  }
 }

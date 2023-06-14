@@ -241,6 +241,7 @@ export function StoreProvider(props) {
         dispatchGeoLocation,
         dispatchCountryData,
         dispatchGraphData,
+        dispatchMapData,
       }}
     >
       {props.children}
