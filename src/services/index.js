@@ -5,7 +5,10 @@ const instance = axios.create({
   headers: {
     'Content-Type': 'application/json',
     'X-Requested-With': 'XMLHttpRequest',
+    'Access-Control-Allow-Origin': '*',
+    'Cache-Control': 'no-store',
   },
+  mode: 'no-cors',
 });
 
 export default instance;

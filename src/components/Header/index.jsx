@@ -63,7 +63,14 @@ function DrawerAppBar(props) {
                 },
               }}
             >
-              <NavLink to={item.path} className={styles.navItem}>
+              <NavLink
+                to={item.path}
+                className={({ isActive }) =>
+                  !isActive
+                    ? styles.navItem
+                    : `${styles.navItem} ${styles.navItemActive}`
+                }
+              >
                 <ListItemText primary={item.nav} />
               </NavLink>
             </ListItemButton>

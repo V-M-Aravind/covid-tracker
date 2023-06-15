@@ -3,13 +3,15 @@ import styles from './MapRenderer.module.css';
 import 'leaflet/dist/leaflet.css';
 import PopUpCard from '../PopUpCard';
 import L from 'leaflet';
+import markerIcon from '../../../assets/images/marker-icon-s.png';
+import shadowIcon from '../../../assets/images/marker-shadow.png';
 
-const markerIcon = L.icon({
-  iconUrl: './assets/images/marker-icon-s.png',
+const markerIcons = L.icon({
+  iconUrl: markerIcon,
   iconSize: [30, 30],
   iconAnchor: [22, 94],
   popupAnchor: [-3, -76],
-  shadowUrl: './assets/images/marker-shadow.png',
+  shadowUrl: shadowIcon,
   shadowSize: [30, 30],
   shadowAnchor: [22, 94],
 });
@@ -36,7 +38,7 @@ const MapRenderer = ({ mapData }) => {
           country,
         } = data;
         return (
-          <Marker position={[lat, long]} key={country} icon={markerIcon}>
+          <Marker position={[lat, long]} key={country} icon={markerIcons}>
             <Popup className={styles.popup}>
               <PopUpCard
                 country={country}
