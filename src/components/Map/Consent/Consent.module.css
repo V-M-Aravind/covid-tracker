@@ -21,4 +21,14 @@
 .buttonContainer {
   display: flex;
   justify-content: space-between;
+  flex-direction: column;
+  row-gap: 20px;
+  margin-bottom: 30px;
+}
+
+/* Media Queries */
+@media (min-width: 600px) {
+  .buttonContainer {
+    flex-direction: row;
+  }
 }

@@ -1,4 +1,8 @@
 import styles from './HomePage.module.css';
+import covidImage from '../../assets/images/covid.jpg';
+import precautionsImage from '../../assets/images/precautions.jpg';
+import symptomsImage from '../../assets/images/symptoms.jpg';
+import medicationImage from '../../assets/images/medications.jpg';
 
 const HomePage = () => {
   return (
@@ -35,7 +39,7 @@ const HomePage = () => {
           </p>
         </div>
         <img
-          src='./assets/images/covid.jpg'
+          src={covidImage}
           alt='About COVID-19'
           width={'400px'}
           height={'255px'}
@@ -79,7 +83,7 @@ const HomePage = () => {
           </p>
         </div>
         <img
-          src='./assets/images/precautions.jpg'
+          src={precautionsImage}
           alt='COVID-19 Precautions'
           width={'400px'}
           height={'255px'}
@@ -110,7 +114,7 @@ const HomePage = () => {
           </p>
         </div>
         <img
-          src='./assets/images/symptoms.jpg'
+          src={symptomsImage}
           alt='COVID-19 Symptoms'
           loading='lazy'
           width={'400px'}
@@ -135,7 +139,7 @@ const HomePage = () => {
           </p>
         </div>
         <img
-          src='./assets/images/medications.jpg'
+          src={medicationImage}
           alt='COVID-19 Medications'
           loading='lazy'
           width={'400px'}
