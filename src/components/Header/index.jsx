@@ -34,7 +34,14 @@ function DrawerAppBar(props) {
   };
 
   const drawer = (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
+    <Box
+      onClick={handleDrawerToggle}
+      sx={{
+        textAlign: 'center',
+        background: 'rgb(51, 51, 51)',
+        height: '100vh',
+      }}
+    >
       <Typography
         variant='title'
         sx={{
@@ -52,7 +59,7 @@ function DrawerAppBar(props) {
           width='25px'
         />
       </Typography>
-      <Divider />
+      <Divider sx={{ borderColor: 'white' }} />
       <List>
         {navItems.map((item) => (
           <ListItem key={item.nav} disablePadding>
