@@ -3,8 +3,8 @@ import styles from './MapRenderer.module.css';
 import 'leaflet/dist/leaflet.css';
 import PopUpCard from '../PopUpCard';
 import L from 'leaflet';
-import markerIcon from '../../../assets/images/marker-icon-s.png';
-import shadowIcon from '../../../assets/images/marker-shadow.png';
+import markerIcon from '../../../assets/images/marker-icon-s.webp';
+import shadowIcon from '../../../assets/images/marker-shadow.webp';
 
 const markerIcons = L.icon({
   iconUrl: markerIcon,

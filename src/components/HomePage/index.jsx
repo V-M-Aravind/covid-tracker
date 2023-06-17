@@ -1,8 +1,8 @@
 import styles from './HomePage.module.css';
-import covidImage from '../../assets/images/covid.jpg';
-import precautionsImage from '../../assets/images/precautions.jpg';
-import symptomsImage from '../../assets/images/symptoms.jpg';
-import medicationImage from '../../assets/images/medications.jpg';
+import covidImage from '../../assets/images/covid-small.webp';
+import precautionsImage from '../../assets/images/precautions-small.webp';
+import symptomsImage from '../../assets/images/symptoms-small.webp';
+import medicationImage from '../../assets/images/medications-small.webp';
 
 const HomePage = () => {
   return (
@@ -43,6 +43,8 @@ const HomePage = () => {
           alt='About COVID-19'
           width={'400px'}
           height={'255px'}
+          className={styles.covidImage}
+          loading='preload'
         />
       </section>
       <section id='precautions' className={styles.section}>
@@ -87,6 +89,7 @@ const HomePage = () => {
           alt='COVID-19 Precautions'
           width={'400px'}
           height={'255px'}
+          className={styles.precautionsImage}
         />
       </section>
       <section id='symptoms' className={styles.section}>
@@ -119,6 +122,7 @@ const HomePage = () => {
           loading='lazy'
           width={'400px'}
           height={'255px'}
+          className={styles.symptomsImage}
         />
       </section>
       <section id='medications' className={styles.section}>
@@ -143,7 +147,8 @@ const HomePage = () => {
           alt='COVID-19 Medications'
           loading='lazy'
           width={'400px'}
-          height={'auto'}
+          height={'255px'}
+          className={styles.medicationImage}
         />
       </section>
     </div>

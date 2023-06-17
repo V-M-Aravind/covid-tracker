@@ -15,7 +15,6 @@ import {
   SET_MAP_LOADING,
 } from './storeConstants';
 import {
-  COUNTRY_NOT_FOUND_ERROR,
   COUNTRY_NOT_FOUND_ERROR_MESSAGE,
   DEFAULT_COORDINATES,
   GRAPH_ERROR_MESSAGE,
@@ -201,7 +200,7 @@ export function StoreProvider(props) {
       .then((data) => {
         dispatch({ type: SET_GRAPH_DATA, payload: data });
       })
-      .catch(() =>
+      .catch((e) =>
         dispatch({
           type: SET_GRAPH_ERROR,
           payload: GRAPH_ERROR_MESSAGE,
@@ -217,16 +216,10 @@ export function StoreProvider(props) {
         dispatch({ type: SET_COUNTRY_DATA, payload: data });
       })
       .catch((e) => {
-        if (e?.response?.data?.message === COUNTRY_NOT_FOUND_ERROR) {
-          dispatch({
-            type: SET_COUNTRY_ERROR,
-            payload: COUNTRY_NOT_FOUND_ERROR_MESSAGE,
-          });
-        } else
-          dispatch({
-            type: SET_COUNTRY_ERROR,
-            payload: COUNTRY_NOT_FOUND_ERROR_MESSAGE,
-          });
+        dispatch({
+          type: SET_COUNTRY_ERROR,
+          payload: COUNTRY_NOT_FOUND_ERROR_MESSAGE,
+        });
       });
   };
   useEffect(() => {

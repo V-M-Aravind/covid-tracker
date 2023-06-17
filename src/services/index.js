@@ -6,7 +6,7 @@ const instance = axios.create({
     'Content-Type': 'application/json',
     'X-Requested-With': 'XMLHttpRequest',
     'Access-Control-Allow-Origin': '*',
-    'Cache-Control': 'no-store',
+    'Cache-Control': 'no-cache, no-store, must-revalidate',
   },
   mode: 'no-cors',
 });

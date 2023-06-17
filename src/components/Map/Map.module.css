@@ -3,18 +3,6 @@
   margin: 5px auto 4px;
   position: relative;
 }
-.title__container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 37px;
-}
-.title {
-  text-align: center;
-}
-.leaflet-container {
-  height: 600px;
-}
 
 /* Media Queries */
 @media (min-width: 1000px) {

@@ -1,6 +1,6 @@
 /* Welcome Banner */
 .welcomeBanner {
-  background-color: #333;
+  background-color: #625757;
   padding: 50px;
   text-align: center;
 }
@@ -56,6 +56,19 @@ section img {
   margin: 20px 30px;
   animation: iamgeBlur 2s ease-in;
   opacity: 1;
+  height: auto;
+}
+.covidImage {
+  aspect-ratio: 1.78;
+}
+.precautionsImage {
+  aspect-ratio: 2.11;
+}
+.medicationsImage {
+  aspect-ratio: 2;
+}
+.symptomsImage {
+  aspect-ratio: 1.52;
 }
 
 @keyframes iamgeBlur {
@@ -94,5 +107,21 @@ section img {
   }
   section p {
     font-size: 20px;
+  }
+  .covidImage {
+    content: url('../../assets/images/covid.webp');
+    aspect-ratio: 1.78;
+  }
+  .precautionsImage {
+    content: url('../../assets/images/precautions.webp');
+    aspect-ratio: 2.11;
+  }
+  .medicationsImage {
+    content: url('../../assets/images/medications.webp');
+    aspect-ratio: 2;
+  }
+  .symptomsImage {
+    content: url('../../assets/images/symptoms.webp');
+    aspect-ratio: 1.52;
   }
 }

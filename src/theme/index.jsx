@@ -56,7 +56,7 @@ const customTheme = {
       },
     },
     title: {
-      color: '#000000',
+      color: '#ffffff',
       fontSize: '1.8rem',
       textShadow: `0px 1.85991px 1.85991px rgba(0, 0, 0, 0.25)`,
       fontFamily: 'Proxima-Bold',
