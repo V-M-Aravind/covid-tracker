@@ -1,0 +1,9 @@
+.title__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 37px;
+}
+.title {
+  text-align: center;
+}

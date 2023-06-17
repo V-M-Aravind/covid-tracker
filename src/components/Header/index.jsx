@@ -45,9 +45,11 @@ function DrawerAppBar(props) {
         }}
       >
         <img
-          src='./assets/logo/c-t-logo-small.png'
+          src='./assets/logo/c-t-logo-small.webp'
           alt='covid-tracker-logo'
           className={styles['logo']}
+          height='25px'
+          width='25px'
         />
       </Typography>
       <Divider />
@@ -85,10 +87,9 @@ function DrawerAppBar(props) {
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
-      <AppBar component='nav' sx={{ background: '#ffff' }}>
+      <AppBar component='nav' sx={{ background: 'rgb(51, 51, 51)' }}>
         <Toolbar>
           <IconButton
-            color='black'
             aria-label='open drawer'
             edge='start'
             onClick={handleDrawerToggle}
@@ -98,7 +99,7 @@ function DrawerAppBar(props) {
               alignItems: 'center',
             }}
           >
-            <MenuIcon fontSize='large' />
+            <MenuIcon fontSize='large' sx={{ color: 'white' }} />
           </IconButton>
           <Typography
             variant='title'
@@ -110,9 +111,11 @@ function DrawerAppBar(props) {
             }}
           >
             <img
-              src='./assets/logo/c-t-logo-small.png'
+              src='./assets/logo/c-t-logo-small.webp'
               alt='covid-tracker-logo'
               className={styles['logo']}
+              height='25px'
+              width='25px'
             />
             Covid-Tracker
           </Typography>
@@ -126,9 +129,11 @@ function DrawerAppBar(props) {
             }}
           >
             <img
-              src='./assets/logo/c-t-logo-large.png'
+              src='./assets/logo/c-t-logo-large.webp'
               alt='covid-tracker-logo'
               className={styles['logo-large']}
+              height='30px'
+              width='30px'
             />
             Covid-Tracker
           </Typography>
@@ -137,7 +142,7 @@ function DrawerAppBar(props) {
               <Button
                 key={item.nav}
                 sx={{
-                  color: '#000000',
+                  color: '#ffffff',
                   fontSize: '18px',
                   fontWeight: '400px',
                 }}

@@ -1,10 +1,11 @@
 import { Button } from '@mui/material';
 import styles from './Consent.module.css';
+import MapTitle from '../MapTitle';
 
 const Consent = ({ getGeoLocation }) => {
   return (
     <div className={styles.consent}>
-      <h2 className={styles.title}>World Map With Covid Data</h2>
+      <MapTitle />
       <div>
         <p>In order to display map, we would like to access your location.</p>
         <div className={styles.buttonContainer}>

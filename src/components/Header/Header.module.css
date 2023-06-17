@@ -10,13 +10,14 @@
 }
 .navItem {
   text-decoration: none;
-  color: #7e7e7e;
+  color: #d8d3d3;
   font-family: 'Proxima-Bold', sans-serif;
   transition: all 1.2s ease-in-out;
+  margin: 0 4px;
 }
 .navItemActive {
-  color: #000000;
-  transform: scale(1.1);
+  color: #ffffff;
+  transform: scale(1.2);
 }
 
 @media screen and (min-width: 600px) {
