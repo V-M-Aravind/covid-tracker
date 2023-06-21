@@ -1,4 +1,4 @@
-import styles from './Pages.module.css';
+import styles from './RouteError.module.css';
 
 const RouteErrorPage = () => {
   return (

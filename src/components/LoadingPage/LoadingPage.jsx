@@ -1,5 +1,5 @@
-import Loader from '../components/Loader';
-import styles from './Pages.module.css';
+import Loader from '../Loader';
+import styles from './LoadingPage.module.css';
 
 const LoadingPage = () => {
   return (
