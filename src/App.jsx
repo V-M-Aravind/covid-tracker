@@ -2,8 +2,8 @@ import { RouterProvider, createHashRouter } from 'react-router-dom';
 import { Suspense, lazy } from 'react';
 import HomePage from './pages/HomePage';
 import { StoreProvider } from './store';
-import LoadingPage from './pages/LoadingPage';
-import RouteErrorPage from './pages/RouteErrorPage';
+import RouteErrorPage from './components/RouteErrorPage';
+import LoadingPage from './components/LoadingPage/LoadingPage';
 
 const WorldMapPage = lazy(() => import('./pages/WorldMapPage'));
 const CountryInfoPage = lazy(() => import('./pages/CountryInfoPage'));

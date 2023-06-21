@@ -1,15 +1,10 @@
-import LineGraph from '../components/LineGraph';
-import MapRender from '../components/Map';
+import WorldMap from '../components/WorldMap/WorldMapPage';
 import Layout from '../layout';
-import styles from './Pages.module.css';
 
 const WorldMapPage = () => {
   return (
     <Layout>
-      <div className={styles.flexContainerWM}>
-        <LineGraph />
-        <MapRender />
-      </div>
+      <WorldMap />
     </Layout>
   );
 };
